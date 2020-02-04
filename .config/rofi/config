@@ -1,0 +1,8 @@
+rofi.theme: solarized
+rofi.font: Fantasque Sans Mono 17
+rofi.terminal: termite
+rofi.modi: window,run,ssh,drun
+#rofi.dpi: 220
+#rofi.run-list-command: source ~/.bash_aliases
+#rofi.run-command: /bin/bash -i -c '{cmd}'
+#rofi.run-shell-command: {terminal} -e {cmd}

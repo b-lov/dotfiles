@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/max/.local/share/wallpapers/wallpaper13.jpg'

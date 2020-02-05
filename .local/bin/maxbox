@@ -1,0 +1,8 @@
+#!/bin/bash
+
+google-chrome-stable --new-window\
+    jackett.maxbox.bid\
+    sonarr.maxbox.bid\
+    radarr.maxbox.bid\
+    rutorrent.maxbox.bid\
+    app.plex.tv

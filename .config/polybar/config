@@ -273,7 +273,7 @@ type = internal/date
 interval = 5
 
 ;date = " %Y-%m-%d"
-date = %b%e
+date = %b %e
 date-alt =
 
 time =  "%H:%M"

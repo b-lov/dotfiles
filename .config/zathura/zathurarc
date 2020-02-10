@@ -2,3 +2,4 @@ map [normal] <A-j> zoom in
 map [normal] <A-k> zoom out
 map [fullscreen] <A-j> zoom in
 map [fullscreen] <A-k> zoom out
+set selection-clipboard clipboard

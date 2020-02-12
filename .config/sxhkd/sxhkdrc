@@ -24,7 +24,7 @@ shift + XF86MonBrightnessDown
 
 # terminal
 super + Return
-    st
+    alacritty
 # vifm
 super + shift + Return
     termite

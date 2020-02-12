@@ -88,11 +88,13 @@ let g:XkbSwitchEnabled = 1
 
 " set space as leader
 let mapleader = "\<Space>"
-map <Leader>yo :Goyo <bar> highlight StatusLineNC ctermfg=white <bar> hi FoldColumn none <CR>
-map <Leader>ll :Limelight!! <CR>
-map <Leader>ww :w <CR>
-map <Leader>q :q <CR>
-map <Leader>wq :wq <CR>
+nnoremap <silent> <leader>yo :Goyo <bar> highlight StatusLineNC ctermfg=white <bar> hi FoldColumn none <CR>
+nnoremap <silent> <leader>ll :Limelight!! <CR>
+nnoremap <silent> <leader>ww :w <CR>
+nnoremap <silent> <leader>q :q <CR>
+nnoremap <silent> <leader>wq :wq <CR>
+nnoremap <silent> <leader>f :FZF<cr>
+nnoremap <silent> <leader>F :FZF ~<cr>
 "nnoremap WW :w <CR>
 "nnoremap WQ :wq <CR>
 "nnoremap QQ :q <CR>

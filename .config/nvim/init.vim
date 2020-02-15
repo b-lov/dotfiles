@@ -1,6 +1,5 @@
-" ------------------
-" PLUGINS
-" ------------------
+"" PLUGINS
+
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -15,17 +14,19 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'chrisbra/Colorizer'
+Plug 'morhetz/gruvbox'
+Plug '~/.fzf'
 call plug#end()
 
-" ------------------
-" APPEARANCE
-" ------------------
+"" APPEARANCE
 
 " colorscheme
 set termguicolors
 set background=dark
-colorscheme solarized8
-let g:solarized_termtrans=1
+let g:gruvbox_italic=1
+colorscheme gruvbox
+" transparent background
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
 " enable syntax
 syntax enable
@@ -35,7 +36,7 @@ let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
 " indicate folds next to line numbers
-set foldcolumn=1
+set foldcolumn=0
 
 " show numbers+relativenumbers
 set number relativenumber
@@ -95,9 +96,6 @@ nnoremap <silent> <leader>q :q <CR>
 nnoremap <silent> <leader>wq :wq <CR>
 nnoremap <silent> <leader>f :FZF<cr>
 nnoremap <silent> <leader>F :FZF ~<cr>
-"nnoremap WW :w <CR>
-"nnoremap WQ :wq <CR>
-"nnoremap QQ :q <CR>
 
-" save file with w!! when not opened with sudo
+" save protected file with w!! when not opened with sudo
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

@@ -7,14 +7,15 @@ export TERMINAL="st-256color"
 export BROWSER="google-chrome"
 export READER="zathura"
 export FILE="ranger"
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir .wine --ignore .git -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd --type directory --follow --hidden --exclude .git --exclude .wine'
 
+# fuzzy stuff
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --exclude .wine --color=always'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type directory --follow --hidden --exclude .git --exclude .wine --color=always'
+export FZF_DEFAULT_OPTS="--ansi"
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" --exclude ".wine" . "$1"
 }
-
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" --exclude ".wine" . "$1"
 }

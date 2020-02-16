@@ -1,4 +1,4 @@
-"" PLUGINS
+" PLUGINS
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -7,8 +7,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'lifepillar/vim-solarized8'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -18,15 +17,14 @@ Plug 'morhetz/gruvbox'
 Plug '~/.fzf'
 call plug#end()
 
-"" APPEARANCE
+" APPEARANCE
 
 " colorscheme
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 set termguicolors
 set background=dark
 let g:gruvbox_italic=1
 colorscheme gruvbox
-" transparent background
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
 " enable syntax
 syntax enable
@@ -36,7 +34,7 @@ let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
 " indicate folds next to line numbers
-set foldcolumn=0
+set foldcolumn=2
 
 " show numbers+relativenumbers
 set number relativenumber
@@ -44,10 +42,15 @@ set number relativenumber
 " always display statusline
 set showtabline=2
 set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#xkblayout#enabled = 0
+set noshowmode
+
+" lightline settings
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'component': { 'lineinfo': ' %3l:%-2v' },
+      \ }
 
 " limelight
 let g:limelight_conceal_guifg = '#32484f'
@@ -58,9 +61,7 @@ set shiftwidth=4    " Indents will have a width of 4
 set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
-" ------------------
 " BASICS
-" ------------------
 
 " wrap lines on whole words
 set linebreak
@@ -83,9 +84,7 @@ set spellcapcheck=
 " enable vim-xkbswitch plugin for russian typing
 let g:XkbSwitchEnabled = 1
 
-" ------------------
 " MAPPINGS
-" ------------------
 
 " set space as leader
 let mapleader = "\<Space>"

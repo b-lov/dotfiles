@@ -4,7 +4,7 @@
 export PATH="$PATH:$HOME/.local/bin"
 export EDITOR="nvim"
 export TERMINAL="st-256color"
-export BROWSER="google-chrome"
+export BROWSER="brave"
 export READER="zathura"
 export FILE="ranger"
 

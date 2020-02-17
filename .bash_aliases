@@ -26,6 +26,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # FUNCTIONS
 
+gitpush() {
+    git commit -am "$1"
+    git push
+}
 confpush() {
     config commit -am "$1"
     config push

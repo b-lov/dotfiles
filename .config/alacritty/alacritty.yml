@@ -1,11 +1,4 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
-
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
 env:
-  # TERM variable
-  #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
@@ -13,24 +6,18 @@ env:
   TERM: xterm-256color
 
 window:
-  # Window dimensions (changes require restart)
-  #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  #dimensions:
+  # dimensions:
   #  columns: 0
   #  lines: 0
 
-  # Window position (changes require restart)
-  #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  #position:
+  # position:
   #  x: 0
   #  y: 0
 
-  # Window padding (changes require restart)
-  #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
@@ -40,27 +27,16 @@ window:
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
 
-  # Window decorations
-  #
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
-  #
-  # Values for `decorations` (macOS only):
-  #     - transparent: Title bar, transparent background and title bar buttons
-  #     - buttonless: Title bar, transparent background, but no title bar buttons
-  #decorations: full
+  # decorations: full
 
-  # Startup Mode (changes require restart)
-  #
   # Values for `startup_mode`:
   #   - Windowed
   #   - Maximized
   #   - Fullscreen
-  #
-  # Values for `startup_mode` (macOS only):
-  #   - SimpleFullscreen
-  #startup_mode: Windowed
+  # startup_mode: Windowed
 
   # Window title
   #title: Alacritty

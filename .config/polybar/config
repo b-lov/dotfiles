@@ -16,21 +16,21 @@ light1      = #ebdbb2
 light2      = #d5c4a1
 light3      = #bdae93
 light4      = #a89984
-red       = #cc241d
-green     = #98971a
-yellow    = #d79921
-blue      = #458588
-purple    = #b16286
-aqua      = #689d6a
-orange    = #d65d0e
+red         = #cc241d
+green       = #98971a
+yellow      = #d79921
+blue        = #458588
+purple      = #b16286
+aqua        = #689d6a
+orange      = #d65d0e
 
-background = ${colors.dark0_hard}
+background     = ${colors.dark0_hard}
 background-alt =
-foreground = ${colors.light3}
+foreground     = ${colors.light3}
 foreground-alt =
-alert = ${colors.red}
-primary = ${colors.yellow}
-secondary =
+alert          = ${colors.red}
+primary        = ${colors.yellow}
+secondary      =
 
 [bar/maxbar]
 ;monitor = ${env:MONITOR:HDMI-1}

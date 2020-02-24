@@ -25,7 +25,7 @@ window:
     y: 15
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: false
+  # dynamic_padding: true
 
   # Values for `decorations`:
   #     - full: Borders and title bar
@@ -39,25 +39,25 @@ window:
   # startup_mode: Windowed
 
   # Window title
-  #title: Alacritty
+  # title: Alacritty
 
   # Window class (Linux/BSD only):
-  #class:
+  # class:
     # Application instance name
-    #instance: Alacritty
+    # instance: Alacritty
     # General application class
-    #general: Alacritty
+    # general: Alacritty
 
   # GTK theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
-  #gtk_theme_variant: None
+  # gtk_theme_variant: None
 
-#scrolling:
+# scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  #history: 10000
+  # history: 10000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).

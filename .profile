@@ -8,6 +8,11 @@ export BROWSER="brave"
 export READER="zathura"
 export FILE="ranger"
 
+# cs50 stuff
+export CC="clang"
+export CFLAGS="-fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow"
+export LDLIBS="-lcrypt -lcs50 -lm"
+
 # fuzzy stuff
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --exclude .wine --color=always'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

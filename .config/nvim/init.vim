@@ -14,6 +14,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'chrisbra/Colorizer'
 Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdtree'
 Plug '~/.fzf'
 call plug#end()
 
@@ -84,10 +85,19 @@ set spellcapcheck=
 " enable vim-xkbswitch plugin for russian typing
 let g:XkbSwitchEnabled = 1
 
-" MAPPINGS
+" natural splitting
+set splitbelow
+set splitright
+
+" start all terminal windows in insert mode
+":au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+autocmd TermOpen,BufWinEnter,BufEnter term://* startinsert
+
+"--- MAPPINGS ---"
 
 " set space as leader
 let mapleader = "\<Space>"
+" various normal mode mappings
 nnoremap <silent> <leader>yo :Goyo <bar> highlight StatusLineNC ctermfg=white <bar> hi FoldColumn none <CR>
 nnoremap <silent> <leader>ll :Limelight!! <CR>
 nnoremap <silent> <leader>ww :w <CR>
@@ -95,6 +105,40 @@ nnoremap <silent> <leader>q :q <CR>
 nnoremap <silent> <leader>wq :wq <CR>
 nnoremap <silent> <leader>f :FZF<cr>
 nnoremap <silent> <leader>F :FZF ~<cr>
+nnoremap <silent> <leader>t :sp +te<cr>
+nnoremap <c-w>v :vnew<CR>
+
+" pair completion
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+" switch windows
+  " Terminal mode
+  tnoremap <M-q> <c-\><c-n>
+  tnoremap <M-h> <c-\><c-n><c-w>h
+  tnoremap <M-j> <c-\><c-n><c-w>j
+  tnoremap <M-k> <c-\><c-n><c-w>k
+  tnoremap <M-l> <c-\><c-n><c-w>l
+  " Insert mode:
+  inoremap <M-h> <Esc><c-w>h
+  inoremap <M-j> <Esc><c-w>j
+  inoremap <M-k> <Esc><c-w>k
+  inoremap <M-l> <Esc><c-w>l
+  " Visual mode:
+  vnoremap <M-h> <Esc><c-w>h
+  vnoremap <M-j> <Esc><c-w>j
+  vnoremap <M-k> <Esc><c-w>k
+  vnoremap <M-l> <Esc><c-w>l
+  " Normal mode:
+  nnoremap <M-h> <c-w>h
+  nnoremap <M-j> <c-w>j
+  nnoremap <M-k> <c-w>k
+  nnoremap <M-l> <c-w>l
 
 " save protected file with w!! when not opened with sudo
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

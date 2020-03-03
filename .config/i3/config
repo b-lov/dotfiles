@@ -32,11 +32,6 @@ focus_follows_mouse no
 # execute polybar on startup
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-# assign workspaces for certain programs
-assign [class="Alacritty"] $ws1
-assign [class="Brave-browser"] $ws2
-for_window [class="Kodi"] move to workspace $ws4
-
 # colors
 # class                 border   backgr.  text     indicator  child_border
 client.focused          #4c7899  #285577  #ffffff  #2aa198    #2aa198

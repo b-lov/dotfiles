@@ -37,6 +37,7 @@ confpush() {
     config commit -am "$1"
     config push
 }
+sec2min() { printf "%d:%02d\n" "$((10#$1 / 60))" "$((10#$1 % 60))"; }
 
 # Fuzzy
 

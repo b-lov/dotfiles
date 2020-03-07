@@ -15,6 +15,7 @@ Plug 'lyokha/vim-xkbswitch'
 Plug 'chrisbra/Colorizer'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug '~/.fzf'
 call plug#end()
 
@@ -62,7 +63,14 @@ set shiftwidth=4    " Indents will have a width of 4
 set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
-" BASICS
+" custom function for markdown preview to open brave in new window
+function! g:Open_browser(url)
+    silent exe "! brave --new-window " . a:url . "&"
+endfunction
+let g:mkdp_browserfunc = 'g:Open_browser'
+let g:mkdp_auto_close = 0
+
+" ---BASICS--- "
 
 " wrap lines on whole words
 set linebreak
@@ -139,6 +147,9 @@ inoremap {;<CR> {<CR>};<ESC>O
   nnoremap <M-j> <c-w>j
   nnoremap <M-k> <c-w>k
   nnoremap <M-l> <c-w>l
+
+" 
+autocmd FIleType markdown nmap <leader>m :MarkdownPreview<CR>
 
 " save protected file with w!! when not opened with sudo
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

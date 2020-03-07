@@ -37,12 +37,6 @@ confpush() {
     config commit -am "$1"
     config push
 }
+
+# convert seconds to minutes
 sec2min() { printf "%d:%02d\n" "$((10#$1 / 60))" "$((10#$1 % 60))"; }
-
-# Fuzzy
-
-fe() {
-  local files
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
-}

@@ -1,5 +1,6 @@
 alias ls='ls --color=auto'
 alias l='ls -Alh --color=auto --group-directories-first'
+alias ll='lsd -Alh --color=auto --group-dirs'
 alias p='sudo pacman'
 alias p?='sudo pacman -Qe | grep'
 alias py='python'
@@ -21,7 +22,7 @@ alias sr='v ~/.config/ranger/rc.conf'
 # alias svf='v ~/.config/vifm/vifmrc'
 alias g='git'
 alias pm="pulsemixer"
-alias maxbox='ssh seed@176.31.182.89'
+alias maxboxssh='ssh seed@176.31.182.89'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gj='cd /var/git/journal'
 alias red='redshift -P -O'
@@ -37,6 +38,3 @@ confpush() {
     config commit -am "$1"
     config push
 }
-
-# convert seconds to minutes
-sec2min() { printf "%d:%02d\n" "$((10#$1 / 60))" "$((10#$1 % 60))"; }

@@ -1,7 +1,5 @@
-# -----------------
-# GENERAL
-# -----------------
-
+#---GENERAL---#
+#{{{ 
 # default modkey (windows)
 set $mod Mod4
 
@@ -17,8 +15,9 @@ font pango:monospace 10
 # use mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# maximum floating size
+# floating size
 floating_maximum_size 1520 x 855
+floating_minimum_size 1520 x 855
 
 # disable window border
 for_window [class="^.*"] border pixel 0
@@ -52,11 +51,10 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+#}}}
 
-# -----------------
-# BINDINGS
-# -----------------
-
+#---BINDINGS---#
+#{{{
 # kill focused window
 bindsym $mod+Shift+q split toggle kill
 # change focus
@@ -143,11 +141,10 @@ mode "resize" {
 	bindsym Escape mode "default"
 	bindsym $mod+r mode "default"
 }
+#}}}
 
-# -----------------
-# BAR
-# -----------------
-
+#---BAR---#
+# {{{
 #bar {
 #	tray_output none
 #	position top
@@ -167,3 +164,4 @@ mode "resize" {
 #		binding_mode         #2f343a    #900000      #eee8d5
 #	}
 #}
+# }}}

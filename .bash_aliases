@@ -26,6 +26,7 @@ alias maxboxssh='ssh seed@176.31.182.89'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gj='cd /var/git/journal'
 alias red='redshift -P -O'
+alias lg='lazygit'
 
 # FUNCTIONS
 

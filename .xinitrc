@@ -19,10 +19,11 @@ picom &
 redshift -P -O 4000
 
 # set hotkeys with sxhkd
-sxhkd &
+#sxhkd &
 
 # merge Xresources
 #xrdb -merge ~/.Xresources
 
 # start i3
-exec i3
+#exec i3
+exec bspwm

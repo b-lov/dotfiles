@@ -1,5 +1,4 @@
-"---PLUGINS---"
-" {{{
+" PLUGINS {{{
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -20,8 +19,7 @@ Plug '~/.fzf'
 call plug#end()
 " }}}
 
-"---APPEARANCE---"
-" {{{
+" APPEARANCE {{{
 " colorscheme
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 set termguicolors
@@ -77,8 +75,7 @@ let g:mkdp_browserfunc = 'g:Open_browser'
 let g:mkdp_auto_close = 0
 " }}}
 
-"---BASICS---"
-" {{{
+" BASICS {{{
 set linebreak " wrap lines on whole words
 
 " start searching immediatly
@@ -119,8 +116,7 @@ set foldmethod=marker
 set hidden
 " }}}
  
-"---MAPPINGS---"
-"{{{
+" MAPPINGS {{{
 " set space as leader
 let mapleader = "\<Space>"
 " various normal mode mappings

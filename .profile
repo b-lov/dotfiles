@@ -16,5 +16,5 @@ export LDLIBS="-lcrypt -lcs50 -lm"
 # load bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# start x-server if on tty1 and i3 not running
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+# start x-server if on tty1 and bspwm not running
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bsmwp >/dev/null && exec startx

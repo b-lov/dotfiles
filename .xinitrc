@@ -3,27 +3,14 @@
 # swap ctrl and capslock, set esc to capslock when tapped
 setxkbmap -option ctrl:nocaps && killall xcape 2>/dev/null ; xcape -e 'Control_L=Escape' &
 
-# speed xrate up
-xset r rate 300 50 &
+xset r rate 300 50 & # speed xrate up
 
-# remove mouse when idle
-unclutter &
+unclutter & # remove mouse when idle
 
-# start compton
-picom &
+picom & # start compton
 
-# set background
-~/.fehbg &
+~/.fehbg & # set background
 
-# make screen warm
-redshift -P -O 4000
+redshift -P -O 4000 # make screen warm
 
-# set hotkeys with sxhkd
-#sxhkd &
-
-# merge Xresources
-#xrdb -merge ~/.Xresources
-
-# start i3
-#exec i3
-exec bspwm
+exec bspwm # start bspwm

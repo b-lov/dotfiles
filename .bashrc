@@ -14,42 +14,41 @@ shopt -s autocd
 # infinite history
 HISTSIZE= HISTFILESIZE=
 
-# fuzzy stuff {{{
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# {{{ fuzzy stuff 
 
 export FZF_DEFAULT_COMMAND="fd --type file\
-                               --follow\
-                               --hidden\
-                               --exclude .git\
-                               --exclude .wine\
-                               --color=always"
+  --follow\
+  --hidden\
+  --exclude .git\
+  --exclude .wine\
+  --color=always"
 
 export FZF_DEFAULT_OPTS="--ansi --no-height --no-reverse"
 
 export FZF_CTRL_T_COMMAND="fd --type file\
-                              --follow\
-                              --hidden\
-                              --exclude .git\
-                              --exclude .wine\
-                              --color=always"
+  --follow\
+  --hidden\
+  --exclude .git\
+  --exclude .wine\
+  --color=always"
 
 export FZF_CTRL_T_OPTS="--preview-window right:70%\
-                        --preview 'bat --style=header\
-                                       --color=always {}'"
+  --preview 'bat --style=header\
+    --color=always {}'"
 
 export FZF_ALT_C_COMMAND="fd --type directory\
-                             --follow\
-                             --hidden\
-                             --exclude .git\
-                             --exclude .wine\
-                             --color=always"
+  --follow\
+  --hidden\
+  --exclude .git\
+  --exclude .wine\
+  --color=always"
 
 export FZF_ALT_C_OPTS="--preview-window right:70%\
-                       --preview 'tree -C {} | head -200'"
+  --preview 'tree -C {} | head -200'"
 
 export FZF_CTRL_R_OPTS="--preview 'echo {}'\
-                        --preview-window down:3:hidden:wrap\
-                        --bind '?:toggle-preview'"
+  --preview-window down:3:hidden:wrap\
+  --bind '?:toggle-preview'"
 
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" --exclude ".wine" . "$1"
@@ -65,5 +64,7 @@ _fzf_compgen_dir() {
 
 # node stuff, makes terminal slow
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

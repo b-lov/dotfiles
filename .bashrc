@@ -2,7 +2,7 @@
 
 # source aliases
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # prompt
@@ -23,7 +23,7 @@ export FZF_DEFAULT_COMMAND="fd --type file\
   --exclude .wine\
   --color=always"
 
-export FZF_DEFAULT_OPTS="--ansi --no-height --no-reverse"
+export FZF_DEFAULT_OPTS="--ansi --no-height"
 
 export FZF_CTRL_T_COMMAND="fd --type file\
   --follow\
@@ -33,8 +33,7 @@ export FZF_CTRL_T_COMMAND="fd --type file\
   --color=always"
 
 export FZF_CTRL_T_OPTS="--preview-window right:70%\
-  --preview 'bat --style=header\
-    --color=always {}'"
+  --preview 'bat --style=header --color=always {}'"
 
 export FZF_ALT_C_COMMAND="fd --type directory\
   --follow\
@@ -64,7 +63,7 @@ _fzf_compgen_dir() {
 
 # node stuff, makes terminal slow
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

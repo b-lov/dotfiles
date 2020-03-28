@@ -1,11 +1,10 @@
-" plugins {{{
+" {{{ plugins 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
   \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
-Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
@@ -18,8 +17,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mengelbrecht/lightline-bufferline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
@@ -55,13 +54,11 @@ let g:lightline = {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
   \ },
-  \ 'tabline': { 'left': [['tabs']], 'right': [['buffers']] }, 
+  \ 'tabline': { 'left': [['tabs']], 'right': [['']] }, 
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
   \ 'component': { 'lineinfo': '%3l:%-2v' },
   \ 'component_function': { 'filetype': 'MyFiletype', 'fileformat': 'MyFileformat', 'cocstatus': 'coc#status' },
-  \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
-  \ 'component_type': { 'buffers': 'tabsel' },
   \ }
 
 " functions to show devicons in tabline
@@ -75,9 +72,6 @@ endfunction
 
 " update lightline on coc refresh
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-" enable devicons on buferline
-let g:lightline#bufferline#enable_devicons = 1
 
 " limelight
 let g:limelight_conceal_guifg = '#32484f'
@@ -138,7 +132,7 @@ set splitbelow
 set splitright
 
 " show lines below/above cursor
-set scrolloff=5
+set scrolloff=10
 
 " start all terminal windows in insert mode
 autocmd TermOpen,BufWinEnter,BufEnter term://* startinsert
@@ -157,33 +151,20 @@ set backupcopy=yes
 " set space as leader
 let mapleader = "\<Space>"
 " various normal mode mappings
-" nnoremap <silent> <leader>yo :Goyo <bar> highlight StatusLineNC ctermfg=white <bar> hi FoldColumn none <CR>
-nnoremap <silent> <leader>yo :Goyo <CR>
-nnoremap <silent> <leader>ll :Limelight!! <CR>
-nnoremap <silent> <leader>ww :w <CR>
-nnoremap <silent> <leader>q :q <CR>
-nnoremap <silent> <leader>wq :wq <CR>
-" nnoremap <silent> <leader>f :FZF<cr>
-" nnoremap <silent> <leader>F :FZF ~<cr>
-nnoremap <silent> <leader>t :term<cr>
-nnoremap <silent> <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>yo :Goyo <CR>
+nnoremap <leader>ll :Limelight!! <CR>
+nnoremap <leader>ww :w <CR>
+nnoremap <leader>q :q <CR>
+nnoremap <leader>wq :wq <CR>
+nnoremap <leader>t :term<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <c-w>v :vnew<CR>
-" make j and k act normally for wrapped lines
 nnoremap j gj
 nnoremap k gk
 nnoremap <F4> :set invwrap wrap?<CR>
 nnoremap <F5> :set invhls hls?<CR>
 nnoremap <silent> <tab> :tabnext<CR>
 nnoremap <silent> <S-tab> :tabprevious<CR>
-
-" pair completion
-"inoremap " ""<left>
-"inoremap ' ''<left>
-"inoremap ( ()<left>
-"inoremap [ []<left>
-"inoremap { {}<left>
-"inoremap {<CR> {<CR>}<ESC>O
-"inoremap {;<CR> {<CR>};<ESC>O
 
 " switch windows
 " Terminal mode
@@ -214,6 +195,8 @@ autocmd FileType markdown nmap <leader>m :MarkdownPreview<CR>
 " save protected file with w!! when not opened with sudo
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
+" reload vim config
+nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
 "}}}
 
 " coc {{{
@@ -349,4 +332,36 @@ nnoremap <silent> <c-a>j  :<C-u>CocNext<CR>
 nnoremap <silent> <c-a>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <c-a>p  :<C-u>CocListResume<CR>
+
+" command for prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " }}}
+
+" fuzzy
+let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
+let g:fzf_preview_window = 'right:70%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+" delete buffers
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --bind ctrl-a:select-all+accept'
+  \ }))
+
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>B :BD<cr>
+nnoremap <leader>c :Commands<cr>
+nnoremap <leader>h :History:<cr>

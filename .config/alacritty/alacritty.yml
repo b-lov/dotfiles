@@ -75,7 +75,7 @@ window:
 # change the `it` value in terminfo when altering this setting.
 # tabspaces: 8
 
-# Font configuration
+# {{{ Font configuration
 font:
   # Normal (roman) font face
   # normal:
@@ -157,8 +157,10 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 # draw_bold_text_with_bright_colors: true
+# }}}
 
-# Colors (Gruvbox dark)
+# {{{ Colors
+# Gruvbox dark
 colors:
   # Default colors
   primary:
@@ -188,7 +190,8 @@ colors:
     magenta: '0xd3869b'
     cyan:    '0x8ec07c'
     white:   '0xebdbb2'
-# Colors (Tomorrow Night Bright)
+
+# Tomorrow Night Bright
 #colors:
   # Default colors
   #primary:
@@ -265,8 +268,9 @@ colors:
   #   `- { index: 16, color: '0xff00ff' }`
   #
   #indexed_colors: []
+# }}}
 
-# Visual Bell
+# {{{ Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the
@@ -291,6 +295,7 @@ colors:
 #  animation: EaseOutExpo
 #  duration: 0
 #  color: '0xffffff'
+# }}}
 
 # Background opacity
 #
@@ -414,7 +419,7 @@ background_opacity: 0.9
     # on them. The available modifiers are documented in the key binding section.
     #modifiers: None
 
-# Mouse bindings
+# {{{ Mouse bindings
 #
 # Mouse bindings are specified as a list of objects, much like the key
 # bindings further below.
@@ -435,8 +440,9 @@ background_opacity: 0.9
 # - `mods` (see key bindings)
 #mouse_bindings:
 #  - { mouse: Middle, action: PasteSelection }
+# }}}
 
-# Key bindings
+# {{{ Key bindings
 #
 # Key bindings are specified as a list of objects. For example, this is the
 # default paste binding:
@@ -536,8 +542,12 @@ background_opacity: 0.9
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
-# key_bindings:
+key_bindings:
   # (Windows, Linux, and BSD only)
+  - { key: J,        mods: Control|Shift, action: ScrollLineDown    }
+  - { key: K,        mods: Control|Shift, action: ScrollLineUp      }
+  - { key: U,        mods: Control|Shift, action: ScrollPageUp      }
+  - { key: D,        mods: Control|Shift, action: ScrollPageDown    }
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
@@ -573,3 +583,4 @@ background_opacity: 0.9
   #- { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
   #- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   #- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+# }}}

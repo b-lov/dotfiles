@@ -23,7 +23,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
 
-" appearance {{{
+" {{{ appearance
 " colorscheme
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 set termguicolors
@@ -104,7 +104,7 @@ autocmd TermOpen *#FZF* :IndentLinesDisable " disable in terminal windows
 let NERDTreeMinimalUI=1
 " }}}
 
-" basics {{{
+" {{{ basics
 set linebreak " wrap lines on whole words
 
 " start searching immediatly
@@ -147,15 +147,16 @@ set hidden
 set backupcopy=yes
 " }}}
 
-" mappings {{{
+" {{{ mappings
 " set space as leader
 let mapleader = "\<Space>"
 " various normal mode mappings
+nnoremap ! :edit <CR>
 nnoremap <leader>yo :Goyo <CR>
 nnoremap <leader>ll :Limelight!! <CR>
-nnoremap <leader>ww :w <CR>
+nnoremap <leader>w :w <CR>
+nnoremap <leader>z :bd <CR>
 nnoremap <leader>q :q <CR>
-nnoremap <leader>wq :wq <CR>
 nnoremap <leader>t :term<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <c-w>v :vnew<CR>
@@ -197,9 +198,9 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " reload vim config
 nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
-"}}}
+" }}}
 
-" coc {{{
+" {{{ coc
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -340,7 +341,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " fuzzy
 let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
 let g:fzf_preview_window = 'right:70%'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 
 " delete buffers
 function! s:list_buffers()
@@ -361,7 +362,9 @@ command! BD call fzf#run(fzf#wrap({
   \ }))
 
 nnoremap <leader>f :Files<cr>
+nnoremap <leader>F :Files ~<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>B :BD<cr>
 nnoremap <leader>c :Commands<cr>
 nnoremap <leader>h :History:<cr>
+nnoremap <leader>H :Help<cr>

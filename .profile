@@ -3,7 +3,7 @@
 # environment variables
 export PATH="$PATH:$HOME/.local/bin"
 export EDITOR="nvim"
-export TERMINAL="st-256color"
+export TERMINAL="alacritty"
 export BROWSER="brave"
 export READER="zathura"
 export FILE="ranger"

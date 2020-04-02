@@ -21,6 +21,8 @@ export FZF_DEFAULT_COMMAND="fd --type file\
   --hidden\
   --exclude .git\
   --exclude .wine\
+  --exclude .nvm\
+  --exclude .npm\
   --color=always"
 
 export FZF_DEFAULT_OPTS="--ansi --no-height"
@@ -30,6 +32,8 @@ export FZF_CTRL_T_COMMAND="fd --type file\
   --hidden\
   --exclude .git\
   --exclude .wine\
+  --exclude .nvm\
+  --exclude .npm\
   --color=always"
 
 export FZF_CTRL_T_OPTS="--preview-window right:70%\
@@ -40,6 +44,8 @@ export FZF_ALT_C_COMMAND="fd --type directory\
   --hidden\
   --exclude .git\
   --exclude .wine\
+  --exclude .nvm\
+  --exclude .npm\
   --color=always"
 
 export FZF_ALT_C_OPTS="--preview-window right:70%\
@@ -63,7 +69,7 @@ _fzf_compgen_dir() {
 
 # node stuff, makes terminal slow
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -1,7 +1,11 @@
 # {{{ wm independent hotkeys
-# terminal emulator
+# terminal
 super + Return
   alacritty
+
+# terminal floating
+super + shift + Return
+  bspc rule -a Alacritty -o state=floating && alacritty
 
 # program launcher
 super + space
@@ -17,27 +21,27 @@ super + shift + x
 
 # volume
 XF86AudioRaiseVolume
-    pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +5%
+  pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioLowerVolume
-    pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -5%
+  pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -5%
 shift + XF86AudioRaiseVolume
-    pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +1%
+  pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +1%
 shift + XF86AudioLowerVolume
-    pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -1%
+  pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -1%
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
-    amixer set Capture toggle
+  amixer set Capture toggle
 
 # brightness
 XF86MonBrightnessUp
-    light -A 5
+  light -A 5
 XF86MonBrightnessDown
-    light -U 5
+  light -U 5
 shift + XF86MonBrightnessUp
-    light -A 1
+  light -A 1
 shift + XF86MonBrightnessDown
-    light -U 1
+  light -U 1
 # }}}
 
 # {{{ bspwm hotkeys

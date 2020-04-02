@@ -14,7 +14,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Brave-browser state=floating rectangle=1520x855+200+125
-bspc rule -a Alacritty state=floating rectangle=1520x855+200+125
+bspc rule -a Alacritty rectangle=1520x855+200+125
 bspc rule -a Zathura rectangle=900x1000+532+50
 
 # bspc rule -a Gimp desktop='^8' state=floating follow=on

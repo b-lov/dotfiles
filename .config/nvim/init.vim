@@ -19,6 +19,7 @@ Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'honza/vim-snippets'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
@@ -164,8 +165,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <F4> :set invwrap wrap?<CR>
 nnoremap <F5> :set invhls hls?<CR>
-nnoremap <silent> <tab> :tabnext<CR>
-nnoremap <silent> <S-tab> :tabprevious<CR>
 
 " switch windows
 " Terminal mode
@@ -198,6 +197,10 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " reload vim config
 nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
+
+" tab navigation
+nnoremap H gT
+nnoremap L gt
 " }}}
 
 " {{{ coc
@@ -223,9 +226,9 @@ set signcolumn=yes
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -318,24 +321,39 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <c-a>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <c-s>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent> <c-a>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <c-s>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent> <c-a>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <c-s>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent> <c-a>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <c-s>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent> <c-a>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <c-s>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <c-a>j  :<C-u>CocNext<CR>
+nnoremap <silent> <c-s>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <c-a>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <c-s>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <c-a>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <c-s>p  :<C-u>CocListResume<CR>
 
 " command for prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 " }}}
 
 " fuzzy
@@ -343,28 +361,9 @@ let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
 let g:fzf_preview_window = 'right:70%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 
-" delete buffers
-function! s:list_buffers()
-  redir => list
-  silent ls
-  redir END
-  return split(list, "\n")
-endfunction
-
-function! s:delete_buffers(lines)
-  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
-endfunction
-
-command! BD call fzf#run(fzf#wrap({
-  \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_buffers(lines) },
-  \ 'options': '--multi --bind ctrl-a:select-all+accept'
-  \ }))
-
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>F :Files ~<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>B :BD<cr>
 nnoremap <leader>c :Commands<cr>
 nnoremap <leader>h :History:<cr>
 nnoremap <leader>H :Help<cr>

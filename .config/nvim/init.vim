@@ -26,7 +26,7 @@ call plug#end()
 
 " {{{ appearance
 " colorscheme
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+" autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 set termguicolors
 set background=dark
 let g:gruvbox_italic=1
@@ -354,6 +354,9 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" autoindent on opening bracket + enter
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
 
 " fuzzy

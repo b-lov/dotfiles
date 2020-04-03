@@ -20,6 +20,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
+Plug 'romainl/vim-cool'
+Plug 'tpope/vim-surround'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
@@ -75,7 +77,7 @@ endfunction
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " limelight
-let g:limelight_conceal_guifg = '#32484f'
+" let g:limelight_conceal_guifg = '#32484f'
 
 " tabs and spaces...
 set expandtab       " Expand TABs to spaces
@@ -133,7 +135,7 @@ set splitbelow
 set splitright
 
 " show lines below/above cursor
-set scrolloff=10
+set scrolloff=3
 
 " start all terminal windows in insert mode
 autocmd TermOpen,BufWinEnter,BufEnter term://* startinsert
@@ -164,7 +166,6 @@ nnoremap <c-w>v :vnew<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <F4> :set invwrap wrap?<CR>
-nnoremap <F5> :set invhls hls?<CR>
 
 " switch windows
 " Terminal mode
@@ -201,6 +202,7 @@ nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
 " tab navigation
 nnoremap H gT
 nnoremap L gt
+nmap ö gcc
 " }}}
 
 " {{{ coc
@@ -361,8 +363,34 @@ inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 
 " fuzzy
 let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
+let $FZF_DEFAULT_OPTS="--reverse --ansi"
 let g:fzf_preview_window = 'right:70%'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+
+function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 10])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
+endfunction
+
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>F :Files ~<cr>

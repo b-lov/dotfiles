@@ -9,7 +9,7 @@ unclutter & # remove mouse when idle
 
 picom & # start compton
 
-~.config/.fehbg & # set background
+/home/max/.config/.fehbg & # set background
 
 redshift -P -O 4000 # make screen warm
 

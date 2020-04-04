@@ -76,9 +76,6 @@ endfunction
 " update lightline on coc refresh
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-" limelight
-" let g:limelight_conceal_guifg = '#32484f'
-
 " tabs and spaces...
 set expandtab       " Expand TABs to spaces
 set tabstop=2       " The width of a TAB is set to 2.
@@ -105,6 +102,9 @@ autocmd TermOpen *#FZF* :IndentLinesDisable " disable in terminal windows
 
 " start nerdtree minimal
 let NERDTreeMinimalUI=1
+
+" show cursorline
+set cursorline
 " }}}
 
 " {{{ basics
@@ -161,6 +161,7 @@ nnoremap <leader>w :w <CR>
 nnoremap <leader>z :bd <CR>
 nnoremap <leader>q :q <CR>
 nnoremap <leader>t :term<cr>
+nnoremap <leader>T :tabnew term://bash<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <c-w>v :vnew<CR>
 nnoremap j gj
@@ -202,7 +203,7 @@ nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
 " tab navigation
 nnoremap H gT
 nnoremap L gt
-nmap ö gcc
+nmap ö gc
 " }}}
 
 " {{{ coc
@@ -361,7 +362,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
 
-" fuzzy
+" {{{ fuzzy
 let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
 let $FZF_DEFAULT_OPTS="--reverse --ansi"
 let g:fzf_preview_window = 'right:70%'
@@ -398,3 +399,4 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>c :Commands<cr>
 nnoremap <leader>h :History:<cr>
 nnoremap <leader>H :Help<cr>
+" }}}

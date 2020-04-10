@@ -204,6 +204,7 @@ nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
 nnoremap H gT
 nnoremap L gt
 nmap ö gc
+vmap ö gc
 " }}}
 
 " {{{ coc

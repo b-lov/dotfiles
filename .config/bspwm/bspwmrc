@@ -13,7 +13,8 @@ bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Brave-browser state=floating rectangle=1520x855+200+125
+# bspc rule -a Brave-browser state=floating rectangle=1520x855+200+125
+bspc rule -a Brave-browser rectangle=1520x855+200+125
 bspc rule -a Alacritty rectangle=1520x855+200+125
 bspc rule -a Zathura rectangle=900x1000+532+50
 

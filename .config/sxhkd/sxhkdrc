@@ -7,6 +7,14 @@ super + Return
 super + shift + Return
   bspc rule -a Alacritty -o state=floating && alacritty
 
+# browser
+super + numbersign
+  brave
+
+# browser floating
+super + shift + numbersign
+  bspc rule -a Brave-browser -o state=floating && brave
+
 # program launcher
 super + space
   rofi -show run

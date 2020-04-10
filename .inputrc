@@ -23,5 +23,7 @@ $endif
 # zsh like completion:
 # https://superuser.com/questions/288714/bash-autocomplete-like-zsh
 set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+# TAB:complete
 TAB:menu-complete
 "\e[Z":menu-complete-backward

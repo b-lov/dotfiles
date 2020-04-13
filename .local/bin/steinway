@@ -1,3 +1,0 @@
-#!/bin/bash
-
-remmina -c ~/.local/share/remmina/group_rdp_steinway_172-25-1-35.remmina &

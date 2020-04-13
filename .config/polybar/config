@@ -30,7 +30,7 @@ background-alt =
 foreground     = ${colors.light3}
 foreground-alt =
 alert          = ${colors.red}
-primary        = ${colors.yellow}
+primary        = ${colors.aqua}
 secondary      =
 ; }}}
 
@@ -38,7 +38,7 @@ secondary      =
 [bar/maxbar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 25
+height = 27
 ;dpi = 96
 ;offset-x = 1%
 ;offset-y = 1%
@@ -46,24 +46,25 @@ height = 25
 fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
-line-size = 2
+line-size = 3
 line-color = ${colors.primary}
 ;border-size =
 ;border-color =
 padding-left = 1
 padding-right = 1
-module-margin-left = 1
+module-margin-left = 3
 module-margin-right = 0
-font-0 = Fantasque Sans Mono:style=Bold:size=13;2
-font-1 = DejaVu Sans:size=11;2
-font-2 = Font Awesome 5 Free:style=Regular:size=11;1
-font-3 = Font Awesome 5 Free:style=Solid:size=10;1
-font-4 = Font Awesome 5 Brands:style=Regular:size=11;1
+font-0 = SF Pro Text:style=Medium:size=11;2
+; font-0 = SF Pro Display:style=Medium:size=12;2
+; font-0 = Fantasque Sans Mono:style=Bold:size=13;2
+font-1 = Font Awesome 5 Free:style=Regular:size=11;1
+font-2 = Font Awesome 5 Free:style=Solid:size=10;1
+font-3 = Font Awesome 5 Brands:style=Regular:size=11;1
 modules-left = bspwm
 modules-center = date
 modules-right = xkeyboard eth wlan pulseaudio backlight-acpi battery2
 ;tray-position = right
-;tray-padding = 2
+; tray-padding = 2
 ;tray-background = #0063ff
 wm-restack = bspwm
 ;wm-restack = i3
@@ -107,7 +108,7 @@ time-alt =
 format-prefix =
 format-prefix-foreground = ${colors.foreground}
 format-underline = ${root.line-color}
-label = %date% %time%
+label = %date% | %time%
 
 [module/xkeyboard]
 type = internal/xkeyboard

@@ -3,5 +3,5 @@ cd ~/cloudbox
 sudo ansible-playbook cloudbox.yml --tags backup
 # UPDATE
 cd ~/cloudbox && git fetch && git reset --hard @{u}
-sudo ansible-playbook cloudbox.yml --tags cloudbox
+sudo ansible-playbook cloudbox.yml --tags cloudbox --skip-tags nzbget,nzbhydra,nzbhydra2,organizr,portainer,lidarr
 sudo reboot

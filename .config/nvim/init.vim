@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'romainl/vim-cool'
 Plug 'tpope/vim-surround'
+Plug 'metakirby5/codi.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
@@ -99,6 +100,8 @@ let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_leadingSpaceEnabled = 1
 autocmd BufEnter NERD_tree* :LeadingSpaceDisable " disable in nerdtree
 autocmd TermOpen *#FZF* :IndentLinesDisable " disable in terminal windows
+autocmd FileType codi :IndentLinesDisable
+
 
 " start nerdtree minimal
 let NERDTreeMinimalUI=1
@@ -205,6 +208,8 @@ nnoremap H gT
 nnoremap L gt
 nmap ö gc
 vmap ö gc
+" replace selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " }}}
 
 " {{{ coc

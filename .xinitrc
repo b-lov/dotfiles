@@ -11,6 +11,6 @@ picom & # start compton
 
 /home/max/.config/.fehbg & # set background
 
-redshift -P -O 4000 # make screen warm
+redshift -P -O 3500 # make screen warm
 
 exec bspwm # start bspwm

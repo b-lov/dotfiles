@@ -22,7 +22,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'romainl/vim-cool'
 Plug 'tpope/vim-surround'
-Plug 'metakirby5/codi.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
@@ -368,7 +367,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
 
-" {{{ fuzzy
+" {{{ fzf
 let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
 let $FZF_DEFAULT_OPTS="--reverse --ansi"
 let g:fzf_preview_window = 'right:70%'

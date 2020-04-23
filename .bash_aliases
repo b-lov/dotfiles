@@ -30,6 +30,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gj='cd /var/git/journal'
 alias red='redshift -P -O'
 alias lg='lazygit'
+alias webdev="google-chrome-stable --auto-open-devtools-for-tabs 127.0.0.1:8080 & v -p index.html style.css index.js -c \":0tabnew term://bash -c 'live-server --no-browser'\""
 
 # FUNCTIONS
 

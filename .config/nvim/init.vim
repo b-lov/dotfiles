@@ -22,17 +22,22 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'romainl/vim-cool'
 Plug 'tpope/vim-surround'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
 
 " {{{ appearance
-" colorscheme
+" make background transparent
 " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-set termguicolors
-set background=dark
-let g:gruvbox_italic=1
-colorscheme gruvbox
+set termguicolors " apparently needed
+" set background=dark
+" let g:gruvbox_italic=1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:nord_cursor_line_number_background = 1
+colorscheme nord
 
 syntax enable " enable syntax
 
@@ -42,8 +47,7 @@ let &t_EI = "\e[2 q"
 
 set foldcolumn=1 " indicate folds next to line numbers
 
-set number relativenumber
-" show numbers+relativenumbers
+set number relativenumber " show numbers+relativenumbers
 
 " always display statusline
 set showtabline=2
@@ -52,7 +56,7 @@ set noshowmode
 
 " lightline settings
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'nord',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
@@ -100,7 +104,6 @@ let g:indentLine_leadingSpaceEnabled = 1
 autocmd BufEnter NERD_tree* :LeadingSpaceDisable " disable in nerdtree
 autocmd TermOpen *#FZF* :IndentLinesDisable " disable in terminal windows
 autocmd FileType codi :IndentLinesDisable
-
 
 " start nerdtree minimal
 let NERDTreeMinimalUI=1

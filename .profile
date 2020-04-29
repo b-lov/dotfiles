@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # environment variables
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/bin/max_scripts"
 export EDITOR="nvim"
 export TERMINAL="xterm-256color"
 export BROWSER="brave"

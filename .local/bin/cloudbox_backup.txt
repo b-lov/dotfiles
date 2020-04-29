@@ -2,6 +2,7 @@
 cd ~/cloudbox
 sudo ansible-playbook cloudbox.yml --tags backup
 # UPDATE
+docker image prune -a
 cd ~/cloudbox && git fetch && git reset --hard @{u}
-sudo ansible-playbook cloudbox.yml --tags cloudbox --skip-tags nzbget,nzbhydra,nzbhydra2,organizr,portainer,lidarr
+sudo ansible-playbook cloudbox.yml --tags cloudbox,traktarr --skip-tags nzbget,nzbhydra,nzbhydra2,organizr,portainer,lidarr
 sudo reboot

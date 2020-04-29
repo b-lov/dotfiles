@@ -1,4 +1,4 @@
-; colors {{{
+; {{{ colors
 [colors]
 ; {{{ gruvbox
 dark0_hard  = #1d2021
@@ -66,19 +66,22 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 ; line-size = 3
-line-color = ${colors.primary}
-; border-size = 5
-;border-color =
+line-color = ${colors.foreground-alt}
+; border-size = 2
+border-bottom-size = 2
+border-color = ${colors.foreground}
 padding-left = 0
 padding-right = 2
-module-margin-left = 2
+module-margin-left = 3
 module-margin-right = 0
-font-0 = SF Pro Text:style=Medium:size=11;2
+; font-0 = Monaco:style=Regular:size=11:antialias=true;2
+; font-0 = SF Pro Display:style=Semibold:size=11:antialias=true;2
+font-0 = Cantarell:style=Bold:size=11:antialias=true;2
 font-1 = JetBrainsMono Nerd Font:style=Regular;1
 font-2 = Symbola:style=Regular;1
 ;font-2 = Noto Color Emoji:scale=10
 modules-left = bspwm
-modules-center = date time
+modules-center = date
 modules-right = xkeyboard eth wlan pulseaudio backlight-acpi battery2
 ;tray-position = right
 ;tray-padding = 2
@@ -118,6 +121,7 @@ label-empty-padding = 2
 type = internal/date
 interval = 5
 date = "%a %e. %b"
+time = "%H:%M"
 ; date-alt =
 ; format-prefix = 
 ; format-prefix = 
@@ -125,25 +129,25 @@ date = "%a %e. %b"
 ; format-prefix = 
 format-prefix-foreground = ${colors.foreground}
 format-underline = ${root.line-color}
-label = %date%
+label = %date% %time%
 
-[module/time]
-type = internal/date
-interval = 5
-time = "%H:%M"
-; time-alt =
-; format-prefix = 
-; format-prefix = 🕘
-; format-prefix = 
-format-prefix-foreground = ${colors.foreground}
-format-underline = ${root.line-color}
-label = %time%
+; [module/time]
+; type = internal/date
+; interval = 5
+; time = "%H:%M"
+; ; time-alt =
+; ; format-prefix = 
+; ; format-prefix = 🕘
+; ; format-prefix = 
+; format-prefix-foreground = ${colors.foreground}
+; format-underline = ${root.line-color}
+; label = %time%
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 format = <label-layout>
-format-prefix = "   "
+format-prefix = "    "
 ; format-prefix = "⌨️ "
 ; format-prefix = "🔤 "
 format-underline = ${root.line-color}
@@ -167,7 +171,7 @@ format-disconnected =
 type = internal/network
 interface = wlan0
 interval = 3.0
-format-connected = 直  <label-connected>
+format-connected = 直   <label-connected>
 ; format-connected = 📶 <label-connected>
 format-connected-underline = ${root.line-color}
 label-connected = %essid%
@@ -186,7 +190,7 @@ ramp-signal-foreground = ${colors.foreground}
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume = <label-volume>
-label-volume =  %percentage%
+label-volume =   %percentage%
 ; label-volume = 🔈 %percentage%
 label-volume-foreground = ${root.foreground}
 format-volume-underline = ${root.line-color}
@@ -214,7 +218,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/xbacklight
 format = <label>
 format-underline = ${root.line-color}
-label =  %percentage%
+label =   %percentage%
 ; label = ☀️ %percentage%
 ; label = 🔆 %percentage%
 bar-width = 10
@@ -481,7 +485,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 0
+margin-top = 1
 margin-bottom = 0
 ; vim:ft=dosini
 ; }}}

@@ -127,7 +127,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set spelllang=ru_yo,de_de,en_us
 
 " automatically turn on spelling for .txt files
-autocmd BufRead,BufNewFile *.txt setlocal spell
+" autocmd BufRead,BufNewFile *.txt setlocal spell
 
 " allow non-capital sentence start
 set spellcapcheck=

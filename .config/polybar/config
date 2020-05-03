@@ -120,7 +120,7 @@ label-empty-padding = 2
 [module/date]
 type = internal/date
 interval = 5
-date = "%a %e. %b"
+date = "%a%e. %b"
 time = "%H:%M"
 ; date-alt =
 ; format-prefix = 

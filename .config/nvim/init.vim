@@ -1,3 +1,117 @@
+" {{{ basics
+set termguicolors " apparently needed
+
+syntax enable " enable syntax
+
+set foldcolumn=1 " indicate folds next to line numbers
+
+set number relativenumber " show numbers+relativenumbers
+
+" always display statusline
+set showtabline=2
+set laststatus=2
+set noshowmode
+
+" tabs and spaces...
+set expandtab     " Expand TABs to spaces
+set tabstop=2     " The width of a TAB is set to 2.
+set shiftwidth=2  " Indents will have a width of 2
+set softtabstop=2 " Sets the number of columns for a TAB
+set smarttab
+
+" disable auto-commenting new lines
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+set cursorline " show cursorline
+
+set linebreak " wrap lines on whole words
+
+set incsearch " start searching immediatly
+set ignorecase
+set smartcase
+
+set timeoutlen=1000 ttimeoutlen=0 " eliminate esc delay
+
+" spelling
+set spelllang=ru_yo,de_de,en_us
+
+" allow non-capital sentence start
+set spellcapcheck=
+
+" natural splitting
+set splitbelow
+set splitright
+
+" lines below/above cursor
+set scrolloff=3
+
+" start all terminal windows in insert mode
+autocmd TermOpen,BufWinEnter,BufEnter term://* startinsert
+
+" folds
+set foldmethod=marker
+
+" hide buffers instead of closing them
+set hidden
+
+" fix hot reloading on save
+set backupcopy=yes
+" }}}
+
+" {{{ basic mappings
+let mapleader = "\<Space>"
+
+nnoremap ! :edit <CR>
+nnoremap <leader>w :w <CR>
+nnoremap <leader>z :bd <CR>
+nnoremap <leader>q :q <CR>
+nnoremap <leader>t :term <CR>
+nnoremap <leader>T :tabnew term://bash <CR>
+nnoremap <c-w>v :vnew<CR>
+nnoremap j gj
+nnoremap k gk
+nnoremap <F4> :set invwrap wrap?<CR>
+
+" switch to normal inside terminal
+tnoremap <M-q> <c-\><c-n>
+
+" {{{ window navigation
+" Terminal mode
+tnoremap <M-h> <c-\><c-n><c-w>h
+tnoremap <M-j> <c-\><c-n><c-w>j
+tnoremap <M-k> <c-\><c-n><c-w>k
+tnoremap <M-l> <c-\><c-n><c-w>l
+" Insert mode:
+inoremap <M-h> <Esc><c-w>h
+inoremap <M-j> <Esc><c-w>j
+inoremap <M-k> <Esc><c-w>k
+inoremap <M-l> <Esc><c-w>l
+" Visual mode:
+vnoremap <M-h> <Esc><c-w>h
+vnoremap <M-j> <Esc><c-w>j
+vnoremap <M-k> <Esc><c-w>k
+vnoremap <M-l> <Esc><c-w>l
+" Normal mode:
+nnoremap <M-h> <c-w>h
+nnoremap <M-j> <c-w>j
+nnoremap <M-k> <c-w>k
+nnoremap <M-l> <c-w>l
+" }}}
+
+" tab navigation
+nnoremap H gT
+nnoremap L gt
+
+" save protected file with w!!
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+" reload vim config
+nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
+
+" replace selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+" }}}
+
 " {{{ plugins 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -11,7 +125,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'chrisbra/Colorizer'
-Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'Yggdroot/indentLine'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -27,34 +140,48 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
 
-" {{{ appearance
-" make background transparent
-" autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-set termguicolors " apparently needed
-" set background=dark
-" let g:gruvbox_italic=1
+" {{{ plugin settings
+
+" nord colorscheme
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_underline = 1
 let g:nord_cursor_line_number_background = 1
 colorscheme nord
 
-syntax enable " enable syntax
+" markdown-preview
+function! g:Open_browser(url)
+  silent exe "! brave --new-window " . a:url . "&"
+endfunction
+let g:mkdp_browserfunc = 'g:Open_browser'
+let g:mkdp_auto_close = 0
+autocmd FileType markdown nmap <leader>m :MarkdownPreview<CR>
 
-" different cursor shape in normal and insert mode
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
+" indentline
+let g:indentLine_char = '│'
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled = 1
+autocmd BufEnter NERD_tree* :LeadingSpaceDisable " disable in nerdtree
+autocmd TermOpen *#FZF* :IndentLinesDisable " disable in fzf
 
-set foldcolumn=1 " indicate folds next to line numbers
+" nerdtree
+let NERDTreeMinimalUI=1 " start in minimal mode
+nnoremap <leader>n :NERDTreeToggle <CR>
 
-set number relativenumber " show numbers+relativenumbers
+" enable vim-xkbswitch plugin for russian typing
+let g:XkbSwitchEnabled = 1
 
-" always display statusline
-set showtabline=2
-set laststatus=2
-set noshowmode
+" goyo
+nnoremap <leader>yo :Goyo <CR>
 
-" lightline settings
+" limelight
+nnoremap <leader>ll :Limelight!! <CR>
+
+" vim-commentary
+nmap ö gc
+vmap ö gc
+
+" {{{ lightline
 let g:lightline = {
   \ 'colorscheme': 'nord',
   \ 'active': {
@@ -79,142 +206,24 @@ endfunction
 
 " update lightline on coc refresh
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-" tabs and spaces...
-set expandtab       " Expand TABs to spaces
-set tabstop=2       " The width of a TAB is set to 2.
-set shiftwidth=2    " Indents will have a width of 2
-set softtabstop=2   " Sets the number of columns for a TAB
-set smarttab
-
-" disable auto-commenting new lines
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" custom function for markdown preview to open brave in new window
-function! g:Open_browser(url)
-  silent exe "! brave --new-window " . a:url . "&"
-endfunction
-let g:mkdp_browserfunc = 'g:Open_browser'
-let g:mkdp_auto_close = 0
-
-" indentline leading spaces
-let g:indentLine_char = '│'
-let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_leadingSpaceEnabled = 1
-autocmd BufEnter NERD_tree* :LeadingSpaceDisable " disable in nerdtree
-autocmd TermOpen *#FZF* :IndentLinesDisable " disable in terminal windows
-autocmd FileType codi :IndentLinesDisable
-
-" start nerdtree minimal
-let NERDTreeMinimalUI=1
-
-" show cursorline
-set cursorline
 " }}}
 
-" {{{ basics
-set linebreak " wrap lines on whole words
+" {{{ fzf
+let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
+let $FZF_DEFAULT_OPTS="--reverse --ansi"
+let g:fzf_preview_window = 'right:70%'
 
-" start searching immediatly
-set incsearch
-set ignorecase
-set smartcase
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 
-" eliminate esc delay
-set timeoutlen=1000 ttimeoutlen=0
-
-" spelling
-set spelllang=ru_yo,de_de,en_us
-
-" automatically turn on spelling for .txt files
-" autocmd BufRead,BufNewFile *.txt setlocal spell
-
-" allow non-capital sentence start
-set spellcapcheck=
-
-" enable vim-xkbswitch plugin for russian typing
-let g:XkbSwitchEnabled = 1
-
-" natural splitting
-set splitbelow
-set splitright
-
-" show lines below/above cursor
-set scrolloff=3
-
-" start all terminal windows in insert mode
-autocmd TermOpen,BufWinEnter,BufEnter term://* startinsert
-
-" folds
-set foldmethod=marker
-
-" hide buffers instead of closing them
-set hidden
-
-" fix hot reloading on save
-set backupcopy=yes
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>F :Files ~<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>c :Commands<cr>
+nnoremap <leader>h :History:<cr>
+nnoremap <leader>H :Help<cr>
 " }}}
 
-" {{{ mappings
-" set space as leader
-let mapleader = "\<Space>"
-" various normal mode mappings
-nnoremap ! :edit <CR>
-nnoremap <leader>yo :Goyo <CR>
-nnoremap <leader>ll :Limelight!! <CR>
-nnoremap <leader>w :w <CR>
-nnoremap <leader>z :bd <CR>
-nnoremap <leader>q :q <CR>
-nnoremap <leader>t :term<cr>
-nnoremap <leader>T :tabnew term://bash<cr>
-nnoremap <leader>n :NERDTreeToggle<cr>
-nnoremap <c-w>v :vnew<CR>
-nnoremap j gj
-nnoremap k gk
-nnoremap <F4> :set invwrap wrap?<CR>
-
-" switch windows
-" Terminal mode
-tnoremap <M-q> <c-\><c-n>
-tnoremap <M-h> <c-\><c-n><c-w>h
-tnoremap <M-j> <c-\><c-n><c-w>j
-tnoremap <M-k> <c-\><c-n><c-w>k
-tnoremap <M-l> <c-\><c-n><c-w>l
-" Insert mode:
-inoremap <M-h> <Esc><c-w>h
-inoremap <M-j> <Esc><c-w>j
-inoremap <M-k> <Esc><c-w>k
-inoremap <M-l> <Esc><c-w>l
-" Visual mode:
-vnoremap <M-h> <Esc><c-w>h
-vnoremap <M-j> <Esc><c-w>j
-vnoremap <M-k> <Esc><c-w>k
-vnoremap <M-l> <Esc><c-w>l
-" Normal mode:
-nnoremap <M-h> <c-w>h
-nnoremap <M-j> <c-w>j
-nnoremap <M-k> <c-w>k
-nnoremap <M-l> <c-w>l
-
-" map for markdown preview for markdown files 
-autocmd FileType markdown nmap <leader>m :MarkdownPreview<CR>
-
-" save protected file with w!! when not opened with sudo
-cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" reload vim config
-nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
-
-" tab navigation
-nnoremap H gT
-nnoremap L gt
-nmap ö gc
-vmap ö gc
-" replace selected text
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-" }}}
-
-" {{{ coc
+" {{{ COC
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -369,42 +378,14 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " autoindent on opening bracket + enter
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
+" }}}
 
-" {{{ fzf
-let $FZF_PREVIEW_COMMAND = 'bat --style=header --color=always {}'
-let $FZF_DEFAULT_OPTS="--reverse --ansi"
-let g:fzf_preview_window = 'right:70%'
+" {{{ unneeded?
 
-function! CreateCenteredFloatingWindow()
-    let width = min([&columns - 4, max([80, &columns - 20])])
-    let height = min([&lines - 4, max([20, &lines - 10])])
-    let top = ((&lines - height) / 2) - 1
-    let left = (&columns - width) / 2
-    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+" cursor shape in normal and insert mode
+" let &t_SI = '\e[6 q'
+" let &t_EI = '\e[2 q'
 
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
-    let lines = [top] + repeat([mid], height - 2) + [bot]
-    let s:buf = nvim_create_buf(v:false, v:true)
-    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-    call nvim_open_win(s:buf, v:true, opts)
-    set winhl=Normal:Floating
-    let opts.row += 1
-    let opts.height -= 2
-    let opts.col += 2
-    let opts.width -= 4
-    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    au BufWipeout <buffer> exe 'bw '.s:buf
-endfunction
-
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
-let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
-
-nnoremap <leader>f :Files<cr>
-nnoremap <leader>F :Files ~<cr>
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>c :Commands<cr>
-nnoremap <leader>h :History:<cr>
-nnoremap <leader>H :Help<cr>
+" automatically turn on spelling for .txt files
+" autocmd BufRead,BufNewFile *.txt setlocal spell
 " }}}

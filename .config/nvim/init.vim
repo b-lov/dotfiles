@@ -12,15 +12,12 @@ set showtabline=2
 set laststatus=2
 set noshowmode
 
-" tabs and spaces...
+" tabs and spaces
 set expandtab     " Expand TABs to spaces
 set tabstop=2     " The width of a TAB is set to 2.
 set shiftwidth=2  " Indents will have a width of 2
 set softtabstop=2 " Sets the number of columns for a TAB
 set smarttab
-
-" disable auto-commenting new lines
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 set cursorline " show cursorline
 
@@ -32,8 +29,7 @@ set smartcase
 
 set timeoutlen=1000 ttimeoutlen=0 " eliminate esc delay
 
-" spelling
-set spelllang=ru_yo,de_de,en_us
+set spelllang=ru_yo,de_de,en_us " spelling
 
 " allow non-capital sentence start
 set spellcapcheck=
@@ -42,7 +38,7 @@ set spellcapcheck=
 set splitbelow
 set splitright
 
-" lines below/above cursor
+" show lines below/above cursor
 set scrolloff=3
 
 " start all terminal windows in insert mode
@@ -51,7 +47,7 @@ autocmd TermOpen,BufWinEnter,BufEnter term://* startinsert
 " folds
 set foldmethod=marker
 
-" hide buffers instead of closing them
+" hide buffers instead of closing
 set hidden
 
 " fix hot reloading on save
@@ -62,11 +58,12 @@ set backupcopy=yes
 let mapleader = "\<Space>"
 
 nnoremap ! :edit <CR>
+nnoremap <leader>n :tabnew <CR>
 nnoremap <leader>w :w <CR>
 nnoremap <leader>z :bd <CR>
 nnoremap <leader>q :q <CR>
-nnoremap <leader>t :term <CR>
 nnoremap <leader>T :tabnew term://bash <CR>
+nnoremap <leader>t :new term://bash <bar> res 7 <CR>
 nnoremap <c-w>v :vnew<CR>
 nnoremap j gj
 nnoremap k gk
@@ -119,13 +116,14 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lyokha/vim-xkbswitch'
-Plug 'chrisbra/Colorizer'
-Plug 'preservim/nerdtree'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'Yggdroot/indentLine'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'tpope/vim-commentary'
@@ -136,11 +134,16 @@ Plug 'honza/vim-snippets'
 Plug 'romainl/vim-cool'
 Plug 'tpope/vim-surround'
 Plug 'arcticicestudio/nord-vim'
+Plug 'psliwka/vim-smoothie'
+Plug 'Shougo/echodoc'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
 
 " {{{ plugin settings
+
+" echodoc
+let g:echodoc_enable_at_startup = 1
 
 " nord colorscheme
 let g:nord_italic = 1
@@ -164,10 +167,6 @@ let g:indentLine_leadingSpaceEnabled = 1
 autocmd BufEnter NERD_tree* :LeadingSpaceDisable " disable in nerdtree
 autocmd TermOpen *#FZF* :IndentLinesDisable " disable in fzf
 
-" nerdtree
-let NERDTreeMinimalUI=1 " start in minimal mode
-nnoremap <leader>n :NERDTreeToggle <CR>
-
 " enable vim-xkbswitch plugin for russian typing
 let g:XkbSwitchEnabled = 1
 
@@ -180,6 +179,9 @@ nnoremap <leader>ll :Limelight!! <CR>
 " vim-commentary
 nmap ö gc
 vmap ö gc
+
+" nvim-colorizer
+lua require'colorizer'.setup()
 
 " {{{ lightline
 let g:lightline = {
@@ -327,8 +329,8 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-" nmap <silent> <TAB> <Plug>(coc-range-select)
-" xmap <silent> <TAB> <Plug>(coc-range-select)
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -378,14 +380,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " autoindent on opening bracket + enter
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
-" }}}
 
-" {{{ unneeded?
-
-" cursor shape in normal and insert mode
-" let &t_SI = '\e[6 q'
-" let &t_EI = '\e[2 q'
-
-" automatically turn on spelling for .txt files
-" autocmd BufRead,BufNewFile *.txt setlocal spell
+" disable auto-commenting new lines
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " }}}

@@ -23,6 +23,9 @@ export FZF_DEFAULT_COMMAND="fd --type file\
   --exclude .wine\
   --exclude .nvm\
   --exclude .npm\
+  --exclude .cache\
+  --exclude node_modules\
+  --exclude dist\
   --color=always"
 
 export FZF_DEFAULT_OPTS="--ansi --no-height"

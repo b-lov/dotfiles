@@ -71,13 +71,14 @@ line-color = ${colors.foreground-alt}
 ; border-size = 2
 border-bottom-size = 2
 border-color = ${colors.foreground}
-padding-left = 1
-padding-right = 3
-module-margin-left = 3
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
 module-margin-right = 0
 ; font-0 = Monaco:style=Regular:size=11:antialias=true;2
 ; font-0 = SF Pro Display:style=Semibold:size=11:antialias=true;2
-font-0 = Cantarell:style=Bold:size=11:antialias=true;2
+; font-0 = Cantarell:style=Bold:size=11:antialias=true;2
+font-0 = Fantasque Sans Mono:style=Bold:size=13:antialas=true;2
 font-1 = JetBrainsMono Nerd Font:style=Regular;1
 font-2 = Symbola:style=Regular;1
 ;font-2 = Noto Color Emoji:scale=10
@@ -107,15 +108,15 @@ label-focused = %index%
 label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
 label-focused-foreground = ${colors.foreground-alt}
-label-focused-padding = 2
+label-focused-padding-right = 2
 label-occupied = %index%
-label-occupied-padding = 2
+label-occupied-padding-right = 2
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding-right = 2
 label-empty =
 label-empty-foreground = ${colors.foreground}
-label-empty-padding = 2
+label-empty-padding-right = 2
 ; label-separator = |
 
 [module/date]
@@ -147,8 +148,8 @@ label = %date% %time%
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
-format = <label-layout>
-format-prefix = "    "
+format =   <label-layout>
+; format-prefix = "  "
 ; format-prefix = "⌨️ "
 ; format-prefix = "🔤 "
 format-underline = ${root.line-color}
@@ -172,7 +173,7 @@ format-disconnected =
 type = internal/network
 interface = wlan0
 interval = 3.0
-format-connected = 直   <label-connected>
+format-connected = 直 <label-connected>
 ; format-connected = 📶 <label-connected>
 format-connected-underline = ${root.line-color}
 label-connected = %essid%
@@ -191,7 +192,7 @@ ramp-signal-foreground = ${colors.foreground}
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume = <label-volume>
-label-volume =   %percentage%
+label-volume =  %percentage%
 ; label-volume = 🔈 %percentage%
 label-volume-foreground = ${root.foreground}
 format-volume-underline = ${root.line-color}
@@ -219,7 +220,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/xbacklight
 format = <label>
 format-underline = ${root.line-color}
-label =   %percentage%
+label =  %percentage%
 ; label = ☀️ %percentage%
 ; label = 🔆 %percentage%
 bar-width = 10

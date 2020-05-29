@@ -27,7 +27,7 @@ set incsearch " start searching immediatly
 set ignorecase
 set smartcase
 
-set timeoutlen=1000 ttimeoutlen=0 " eliminate esc delay
+set timeoutlen=500 ttimeoutlen=0 " eliminate esc delay
 
 set spelllang=ru_yo,de_de,en_us " spelling
 
@@ -60,13 +60,14 @@ let mapleader = "\<Space>"
 nnoremap ! :edit <CR>
 nnoremap <leader>n :tabnew <CR>
 nnoremap <leader>w :w <CR>
+nnoremap <leader>W :wq <CR>
 nnoremap <leader>z :bd <CR>
 nnoremap <leader>q :q <CR>
 nnoremap <leader>T :tabnew term://bash <CR>
 nnoremap <leader>t :new term://bash <bar> res 7 <CR>
 nnoremap <c-w>v :vnew<CR>
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 nnoremap <F4> :set invwrap wrap?<CR>
 
 " switch to normal inside terminal
@@ -107,6 +108,10 @@ nnoremap <leader>% :source ~/.config/nvim/init.vim<cr>
 
 " replace selected text
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" move selected lines up and down
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
 " }}}
 
 " {{{ plugins 
@@ -116,6 +121,12 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-dispatch'
+Plug 'takac/vim-hardtime'
+Plug 'mlaursen/vim-react-snippets'
+Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
@@ -142,8 +153,48 @@ call plug#end()
 
 " {{{ plugin settings
 
+" vim-fugitive
+nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
+" nnoremap <leader>gp :Ggrep<Space>
+nnoremap <leader>gm :Gmove<Space>
+nnoremap <leader>gb :Git branch<Space>
+nnoremap <leader>go :Git checkout<Space>
+nnoremap <leader>gps :Dispatch! git push<CR>
+nnoremap <leader>gpl :Dispatch! git pull<CR>
+
+" hardtime
+let g:hardtime_default_on = 1
+" let g:hardtime_allow_different_key = 1
+
+" floaterm
+let g:floaterm_keymap_new    = '<F9>'
+let g:floaterm_keymap_prev   = '<F10>'
+let g:floaterm_keymap_next   = '<F11>'
+let g:floaterm_keymap_toggle = '<F12>'
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.7
+
+" startify
+autocmd User Startified setlocal buflisted
+
+" which-key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+let g:which_key_use_floating_win = 1
+
+" vim-polyglot
+let g:vim_jsx_pretty_colorful_config = 1 " jsx-pretty
+
 " echodoc
-let g:echodoc_enable_at_startup = 1
+let g:echodoc#enable_at_startup = 1
+" let g:echodoc#type = 'virtual'
 
 " nord colorscheme
 let g:nord_italic = 1
@@ -221,7 +272,7 @@ nnoremap <leader>f :Files<cr>
 nnoremap <leader>F :Files ~<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>c :Commands<cr>
-nnoremap <leader>h :History:<cr>
+nnoremap <leader>hi :History:<cr>
 nnoremap <leader>H :Help<cr>
 " }}}
 
@@ -342,6 +393,8 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Mappings using CoCList:
+" show all lists
+nnoremap <silent> <c-s>l  :<C-u>CocList<cr>
 " Show all diagnostics.
 nnoremap <silent> <c-s>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.

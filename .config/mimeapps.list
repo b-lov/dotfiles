@@ -6,5 +6,6 @@ application/pdf=org.pwmt.zathura.desktop
 inode/x-empty=nvim.desktop
 x-scheme-handler/webcal=brave-browser.desktop
 x-scheme-handler/postman=Postman.desktop
+application/octet-stream=mpv_term.desktop
 
 [Added Associations]

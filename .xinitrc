@@ -1,13 +1,14 @@
 #!/bin/sh
 
 # swap ctrl and capslock, set esc to capslock when tapped
-setxkbmap -option ctrl:nocaps && killall xcape 2>/dev/null ; xcape -e 'Control_L=Escape' &
+# setxkbmap -option ctrl:nocaps && 
+killall xcape 2>/dev/null ; xcape -e 'Control_L=Escape'
 
 xset r rate 300 50 & # speed xrate up
 
 unclutter & # remove mouse when idle
 
-picom & # start compton
+picom & # start picom
 
 /home/max/.config/.fehbg & # set background
 

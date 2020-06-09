@@ -1,0 +1,52 @@
+{
+  "codeLens.enable": false,
+  "suggest.echodocSupport": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "html",
+    "json"
+  ],
+  "coc.preferences.formatOnType": true,
+
+  "tsserver.formatOnType": true,
+
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+
+  "emmet.syntaxProfiles": { "javascript": "jsx" },
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+
+  "prettier.requireConfig": true,
+  "prettier.singleQuote": true,
+  "prettier.disableSuccessMessage": true,
+
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact"
+  ],
+
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  }
+}

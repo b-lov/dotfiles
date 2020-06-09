@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# generate random number as name for wallpaper
+wallpaper="$RANDOM.jpeg"
+
+# download wallpaper and save it under generated name
+wget https://source.unsplash.com/1920x1080/?dark -O "/home/max/.local/share/wallpapers/random/$wallpaper"
+
+# update .fehbg with downloaded wallpaper
+echo "#!/bin/sh
+feh --no-fehbg --bg-fill '/home/max/.local/share/wallpapers/random/$wallpaper'" > /home/max/.config/.fehbg
+
+# run fehbg to set new background
+/home/max/.config/.fehbg

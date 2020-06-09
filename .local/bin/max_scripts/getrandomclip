@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# get length of audio file in seconds via ffprobe
+FILE_LENGTH=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 $1)
+
+# set length of clip
+CLIP_LENGTH=10
+
+# generate random start location within range of track (-clip_length to avoid overflow)
+CLIP_START_LOCATION=$(( $RANDOM % $(( ${FILE_LENGTH%.*} - $CLIP_LENGTH ))))
+
+# create random clip name with clip_start_location variable
+CLIP_NAME="clip_$CLIP_START_LOCATION.mp3"
+
+# ffmpeg command to extract the clip
+COMMAND="ffmpeg -ss $CLIP_START_LOCATION -i $1 -t $CLIP_LENGTH -vcodec copy -acodec copy $CLIP_NAME"
+
+$COMMAND

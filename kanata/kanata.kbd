@@ -1,0 +1,67 @@
+;; =============================================================================
+;; KANATA CONFIGURATION
+;; =============================================================================
+
+(defcfg
+  process-unmapped-keys yes  ;; Nicht explizit gemappte Tasten normal durchreichen
+  concurrent-tap-hold   yes  ;; Zuverlaessiges Erkennen bei schnellem Tippen
+)
+
+;; -----------------------------------------------------------------------------
+;; GLOBAL CHORDS
+;; -----------------------------------------------------------------------------
+(defchordsv2
+  ;; Beide Shift-Tasten gleichzeitig = Konfiguration neu laden
+  (lshift rshift) lrld 150 all-released ()
+)
+
+;; -----------------------------------------------------------------------------
+;; ALIASES
+;; -----------------------------------------------------------------------------
+(defalias
+  ;; Modifier & Navigation Toggles
+  caps (tap-hold-press 200 200 esc lctl)
+  spc (tap-hold-press 0 65535 spc (layer-toggle space))
+
+  ;; Deutsche Umlaute (benoetigt Host-Layout: us(altgr-intl))
+  ä   (fork AG-q AG-S-q (lsft rsft))
+  ü   (fork AG-y AG-S-y (lsft rsft))
+  ö   (fork AG-p AG-S-p (lsft rsft))
+  ß   AG-s  ;; mit Shift: § (Paragraphenzeichen)
+)
+
+;; -----------------------------------------------------------------------------
+;; PHYSICAL MATRIX (defsrc)
+;; -----------------------------------------------------------------------------
+(defsrc
+  caps
+  spc
+  lalt  lmet        ralt  rmet
+  h     j     k     l
+  a     u     o     s
+  m     /
+)
+
+;; -----------------------------------------------------------------------------
+;; BASE LAYER
+;; -----------------------------------------------------------------------------
+(deflayer base
+  @caps
+  @spc
+  lmet  lalt        rmet  ralt    ;; Swap Alt <-> Super (macOS-Style Modifiers)
+  _     _     _     _             ;; h j k l
+  _     _     _     _             ;; a u o s
+  _     _                         ;; m /
+)
+
+;; -----------------------------------------------------------------------------
+;; SPACE LAYER (Hold Space)
+;; -----------------------------------------------------------------------------
+(deflayer space
+  _
+  XX                              ;; Verhindert Repeat der Leertaste beim Halten
+  _     _           _     _       ;; Behaelt Modifier-Swap bei
+  left  down  up    right         ;; Vim-Navigation
+  @ä    @ü    @ö    @ß            ;; Umlaute
+  bspc  ret                       ;; Textbearbeitung (m -> Backspace, / -> Enter)
+)

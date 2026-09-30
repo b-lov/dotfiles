@@ -7,53 +7,90 @@ api.unmap("gf");
 api.unmap("<<");
 api.unmap(">>");
 
-// hints styling
-api.Hints.style(`
-    font-family: Quicksand, BlinkMacSystemFont;
-    font-size: 15px;
-    color: white;
-    background: #232db8;
-    border: none;
-    border-radius: 0;
-    -webkit-font-smoothing: antialiased;
-    letter-spacing: 0.25px;
-`);
+// hints styling (Catppuccin Mocha)
+const hintStyle = `
+    font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #cdd6f4 !important;
+    background: #181825 !important;
+    border: 1px solid #89b4fa !important;
+    border-radius: 5px !important;
+    padding: 2px 6px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45) !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+`;
+api.Hints.style(hintStyle);
+api.Hints.style(hintStyle, "text");
 
-// set theme
+// set theme (Catppuccin Mocha)
 settings.theme = `
 .sk_theme {
-    font-family: Input Sans Condensed, Charcoal, sans-serif;
-    font-size: 10pt;
-    background: #24272e;
-    color: #abb2bf;
+    font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 11pt;
+    background: #11111b;
+    color: #cdd6f4;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #313244;
 }
 .sk_theme tbody {
-    color: #fff;
+    color: #cdd6f4;
 }
 .sk_theme input {
-    color: #d0d0d0;
+    color: #cdd6f4;
+    font-size: 13pt;
+    padding: 10px 14px;
 }
 .sk_theme .url {
-    color: #61afef;
+    color: #89b4fa;
 }
 .sk_theme .annotation {
-    color: #56b6c2;
+    color: #f5c2e7;
 }
 .sk_theme .omnibar_highlight {
-    color: #528bff;
+    color: #a6e3a1;
+    font-weight: bold;
 }
 .sk_theme .omnibar_timestamp {
-    color: #e5c07b;
+    color: #f9e2af;
 }
 .sk_theme .omnibar_visitcount {
-    color: #98c379;
+    color: #94e2d5;
+}
+.sk_theme #sk_omnibarSearchResult ul li {
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 2px 6px;
 }
 .sk_theme #sk_omnibarSearchResult ul li:nth-child(odd) {
-    background: #303030;
+    background: #181825;
 }
 .sk_theme #sk_omnibarSearchResult ul li.focused {
-    background: #3e4452;
+    background: #313244;
+    color: #ffffff;
 }
 #sk_status, #sk_find {
-    font-size: 20pt;
-}`;
+    font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
+    font-size: 11pt;
+    background: #11111b;
+    color: #cdd6f4;
+    border: 1px solid #313244;
+    border-radius: 8px;
+    padding: 6px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+#sk_keystroke {
+    background: #11111b;
+    border: 1px solid #313244;
+    border-radius: 8px;
+    color: #cdd6f4;
+}
+.sk_theme kbd {
+    background: #181825;
+    border: 1px solid #45475a;
+    box-shadow: none;
+    color: #cdd6f4;
+}
+`;

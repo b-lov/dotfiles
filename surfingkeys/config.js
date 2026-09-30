@@ -1,11 +1,3 @@
-// remaps
-
-// api.addSearchAlias('m', 'rarbg', 'https://rarbg.to/torrents.php?search={0}&category%5B%5D=17&category%5B%5D=44&category%5B%5D=45&category%5B%5D=47&category%5B%5D=50&category%5B%5D=51&category%5B%5D=52&category%5B%5D=42&category%5B%5D=46&category%5B%5D=54');
-
-// because of german 'ß' which is typed by Alt-s
-api.map("<Ctrl-i>", "<Alt-s>");
-api.unmap("<Alt-s>");
-
 // remap open link in new tab to F, in background to af
 api.map("F", "af");
 api.map("af", "gf");
@@ -14,9 +6,6 @@ api.unmap("gf");
 // unmap > and < for youtube video speed adj.
 api.unmap("<<");
 api.unmap(">>");
-
-// close tab has no restore function in arc
-api.unmap("x");
 
 // hints styling
 api.Hints.style(`

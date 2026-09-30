@@ -93,33 +93,48 @@ settings.theme = `
     border: none !important;
     outline: none !important;
 }
-#sk_omnibarSearchResult ul li {
-    padding: 8px 14px;
-    border-radius: 8px;
-    margin: 3px 6px;
-    transition: background 0.1s ease;
+.sk_theme #sk_omnibarSearchResult>ul>li,
+.sk_theme #sk_omnibarSearchResult ul li {
+    padding: 8px 14px !important;
+    border-radius: 8px !important;
+    margin: 3px 6px !important;
+    transition: background 0.1s ease !important;
+    background: #11111b !important;
 }
-#sk_omnibarSearchResult ul li:nth-child(odd) {
-    background: #181825;
+.sk_theme #sk_omnibarSearchResult>ul>li:nth-child(odd),
+.sk_theme #sk_omnibarSearchResult ul li:nth-child(odd) {
+    background: #181825 !important;
 }
-#sk_omnibarSearchResult ul li.focused {
-    background: #313244;
-    color: #ffffff;
+.sk_theme #sk_omnibarSearchResult>ul>li:nth-child(even),
+.sk_theme #sk_omnibarSearchResult ul li:nth-child(even) {
+    background: #11111b !important;
 }
-#sk_omnibarSearchResult li div.title {
-    color: #cdd6f4;
-    font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", sans-serif;
-    font-size: 13px;
-    font-weight: 500;
+.sk_theme #sk_omnibarSearchResult>ul>li.focused,
+.sk_theme #sk_omnibarSearchResult ul li.focused {
+    background: #313244 !important;
+    color: #ffffff !important;
 }
-#sk_omnibarSearchResult li.focused div.title {
-    color: #ffffff;
-    font-weight: 600;
+.sk_theme #sk_omnibarSearchResult li div.title {
+    color: #cdd6f4 !important;
+    font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
 }
-#sk_omnibarSearchResult li div.url {
-    color: #89b4fa;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+.sk_theme #sk_omnibarSearchResult li.focused div.title {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+.sk_theme #sk_omnibarSearchResult li div.url {
+    color: #89b4fa !important;
+    font-family: "JetBrains Mono", monospace !important;
+    font-size: 11px !important;
+}
+.sk_theme #sk_omnibarSearchResult li.focused div.url {
+    color: #b4befe !important;
+}
+.sk_theme #sk_omnibarSearchResult li span.annotation {
+    color: #f5c2e7 !important;
+    font-family: "JetBrains Mono", monospace !important;
 }
 #sk_status, #sk_find {
     font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;

@@ -1,3 +1,4 @@
+
 {
 	"workbench.colorTheme": "Catppuccin Mocha",
 	"update.mode": "none",
@@ -13,11 +14,12 @@
 	"breadcrumbs.enabled": false,
 	"editor.scrollbar.horizontal": "hidden",
 	"editor.scrollbar.verticalScrollbarSize": 0,
+	"editor.occurrencesHighlight": "off",
 	"workbench.iconTheme": "vscode-modern-icons",
 	"editor.lineHeight": 1.7,
 	"editor.padding.top": 24,
 	"editor.fontSize": 16,
-	"editor.fontFamily": "'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'Courier New', monospace",
+	"editor.fontFamily": "JetBrains Mono",
 	"editor.cursorBlinking": "phase",
 	"editor.tabSize": 2,
 	"vim.handleKeys": {

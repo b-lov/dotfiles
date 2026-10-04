@@ -14,6 +14,7 @@
 	"editor.scrollbar.horizontal": "hidden",
 	"editor.scrollbar.verticalScrollbarSize": 0,
 	"editor.occurrencesHighlight": "off",
+	"editor.guides.indentation": false,
 	"editor.matchBrackets": "never",
 	"workbench.iconTheme": "vscode-modern-icons",
 	"editor.lineHeight": 1.7,

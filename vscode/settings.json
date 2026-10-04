@@ -12,7 +12,7 @@
 	"workbench.browser.showInTitleBar": false,
 	"breadcrumbs.enabled": false,
 	"editor.scrollbar.horizontal": "hidden",
-	"editor.scrollbar.vertical": "hidden",
+	"editor.scrollbar.verticalScrollbarSize": 0,
 	"workbench.iconTheme": "vscode-modern-icons",
 	"editor.lineHeight": 1.8,
 	"editor.padding.top": 24,

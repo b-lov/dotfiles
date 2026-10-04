@@ -16,7 +16,7 @@
 	"editor.occurrencesHighlight": "off",
 	"editor.guides.indentation": false,
 	"editor.matchBrackets": "never",
-	"workbench.iconTheme": "vscode-modern-icons",
+	"workbench.iconTheme": "symbols",
 	"editor.lineHeight": 1.7,
 	"editor.padding.top": 24,
 	"editor.fontSize": 16,
@@ -34,5 +34,6 @@
 	"git.useEditorAsCommitInput": false,
 	"dictation.model": "mai",
 	"git.confirmSync": false,
-	"git.postCommitCommand": "sync"
+	"git.postCommitCommand": "sync",
+	"symbols.hidesExplorerArrows": true
 }

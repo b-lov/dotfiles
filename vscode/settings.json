@@ -10,7 +10,6 @@
 	"workbench.layoutControl.enabled": false,
 	"chat.titleBar.openInAgentsWindow.enabled": false,
 	"workbench.browser.showInTitleBar": false,
-	"workbench.activityBar.location": "hidden",
 	"breadcrumbs.enabled": false,
 	"editor.scrollbar.horizontal": "hidden",
 	"editor.scrollbar.vertical": "hidden",
@@ -20,5 +19,11 @@
 	"editor.fontSize": 16,
 	"editor.fontFamily": "'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'Courier New', monospace",
 	"editor.cursorBlinking": "phase",
-	"editor.tabSize": 2
+	"editor.tabSize": 2,
+	"vim.handleKeys": {
+		"<C-k>": false,
+		"<C-b>": false
+	},
+	"workbench.statusBar.visible": false,
+	"workbench.activityBar.location": "hidden"
 }

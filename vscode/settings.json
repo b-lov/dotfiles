@@ -15,6 +15,8 @@
 	"editor.scrollbar.horizontal": "hidden",
 	"editor.scrollbar.verticalScrollbarSize": 0,
 	"editor.occurrencesHighlight": "off",
+	"editor.guides.highlightActiveBracketPair": false,
+	"editor.matchBrackets": "never",
 	"workbench.iconTheme": "vscode-modern-icons",
 	"editor.lineHeight": 1.7,
 	"editor.padding.top": 24,
@@ -31,5 +33,7 @@
 	"git.enableSmartCommit": true,
 	"git.autofetch": true,
 	"git.useEditorAsCommitInput": false,
-	"dictation.model": "mai"
+	"dictation.model": "mai",
+	"git.confirmSync": false,
+	"git.postCommitCommand": "sync"
 }

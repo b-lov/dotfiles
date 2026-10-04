@@ -25,5 +25,9 @@
 		"<C-b>": false
 	},
 	"workbench.statusBar.visible": false,
-	"workbench.activityBar.location": "hidden"
+	"workbench.activityBar.location": "hidden",
+	"git.enableSmartCommit": true,
+	"git.autofetch": true,
+	"git.useEditorAsCommitInput": false,
+	"dictation.model": "mai"
 }

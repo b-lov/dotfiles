@@ -3,6 +3,7 @@
 	"update.mode": "none",
 	"workbench.startupEditor": "none",
 	"editor.minimap.enabled": false,
+	"editor.glyphMargin": false,
 	"workbench.editor.showTabs": "none",
 	"window.menuBarVisibility": "compact",
 	"window.commandCenter": false,

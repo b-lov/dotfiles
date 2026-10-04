@@ -37,5 +37,6 @@
 	"dictation.model": "mai",
 	"git.confirmSync": false,
 	"git.postCommitCommand": "sync",
-	"symbols.hidesExplorerArrows": true
+	"symbols.hidesExplorerArrows": true,
+	"editor.lineNumbers": "off"
 }

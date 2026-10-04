@@ -38,5 +38,6 @@
 	"git.confirmSync": false,
 	"git.postCommitCommand": "sync",
 	"symbols.hidesExplorerArrows": true,
-	"editor.lineNumbers": "off"
+	"editor.lineNumbers": "off",
+	"workbench.tips.enabled": false
 }

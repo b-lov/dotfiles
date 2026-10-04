@@ -24,6 +24,7 @@
 	"editor.cursorBlinking": "phase",
 	"editor.tabSize": 2,
 	"vim.handleKeys": {
+		"<C-p>": false,
 		"<C-k>": false,
 		"<C-b>": false
 	},

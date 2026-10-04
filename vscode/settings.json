@@ -14,7 +14,7 @@
 	"editor.scrollbar.horizontal": "hidden",
 	"editor.scrollbar.verticalScrollbarSize": 0,
 	"workbench.iconTheme": "vscode-modern-icons",
-	"editor.lineHeight": 1.8,
+	"editor.lineHeight": 1.7,
 	"editor.padding.top": 24,
 	"editor.fontSize": 16,
 	"editor.fontFamily": "'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'Courier New', monospace",

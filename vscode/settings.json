@@ -29,7 +29,6 @@
 		"<C-k>": false,
 		"<C-b>": false
 	},
-	"workbench.statusBar.visible": false,
 	"workbench.activityBar.location": "hidden",
 	"git.enableSmartCommit": true,
 	"git.autofetch": true,
@@ -40,5 +39,7 @@
 	"symbols.hidesExplorerArrows": true,
 	"editor.lineNumbers": "off",
 	"workbench.tips.enabled": false,
-	"workbench.experimental.modernUI": false
+	"workbench.experimental.modernUI": false,
+	"window.restoreWindows": "none",
+	"workbench.statusBar.visible": false
 }

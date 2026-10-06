@@ -27,7 +27,8 @@
 	"vim.handleKeys": {
 		"<C-p>": false,
 		"<C-k>": false,
-		"<C-b>": false
+		"<C-b>": false,
+		"<C-f>": false
 	},
 	"workbench.activityBar.location": "hidden",
 	"git.enableSmartCommit": true,
@@ -43,5 +44,6 @@
 	"window.restoreWindows": "none",
 	"workbench.statusBar.visible": false,
 	"security.workspace.trust.untrustedFiles": "open",
-	"window.titleBarStyle": "native"
+	"window.titleBarStyle": "native",
+	"explorer.confirmDelete": false
 }

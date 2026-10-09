@@ -45,5 +45,6 @@
 	"workbench.statusBar.visible": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"window.titleBarStyle": "native",
-	"explorer.confirmDelete": false
+	"explorer.confirmDelete": false,
+	"editor.smoothScrolling": true
 }

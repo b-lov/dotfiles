@@ -37,5 +37,4 @@ o.bind("XF86Launch5", "OmniVoice Stop", "omnivoice stop", { release = true })
 o.bind("SUPER + XF86Launch5", "OmniVoice History", "omnivoice history")
 
 -- Gemini: Open Gemini Webapp 
-hl.unbind("SUPER + SHIFT + A")
-o.bind("SUPER + SHIFT + A", "Gemini", { webapp = "https://gemini.google.com/app" })
+o.rebind("SUPER + SHIFT + A", "Gemini", { webapp = "https://gemini.google.com/app" })

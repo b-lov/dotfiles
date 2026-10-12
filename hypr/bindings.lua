@@ -38,3 +38,4 @@ o.bind("SUPER + XF86Launch5", "OmniVoice History", "omnivoice history")
 
 -- Gemini: Open Gemini Webapp 
 o.rebind("SUPER + SHIFT + A", "Gemini", { webapp = "https://gemini.google.com/app" })
+o.rebind("SUPER + SHIFT + M", "Outlook", { webapp = "https://outlook.office.com/mail/" })

@@ -20,15 +20,25 @@
 (defalias
   ;; Modifier & Navigation Toggles
   caps (tap-hold-press 200 200 esc lctl)
-  ;; Allein >400ms gehalten = echtes gehaltenes Space (Key-Repeat), Layer bleibt aktiv
-  spc (tap-hold-press-timeout 0 400 spc (layer-while-held space) (multi spc (layer-while-held space)))
+  ;; Layer sofort beim Drücken (kein tap-hold-Wartezustand, sonst hängt die Taste davor);
+  ;; Leerzeichen beim Loslassen, siehe spc-alone
+  spc (multi (layer-while-held space) (on-release tap-vkey spc-alone))
+  nav (layer-while-held nav)
 
   ;; Deutsche Umlaute (benötigt Host-Layout: us(altgr-intl))
-  ;; Gehaltenes Shift wird durchgereicht: Ä Ü Ö bzw. § (Paragraphenzeichen)
   ä   AG-q
   ü   AG-y
   ö   AG-p
   ß   AG-s
+)
+
+;; -----------------------------------------------------------------------------
+;; VIRTUAL KEYS
+;; -----------------------------------------------------------------------------
+(defvirtualkeys
+  ;; Leerzeichen nur, wenn Space die zuletzt gedrückte Taste war (Layer nicht benutzt)
+  ;; Recency 2, weil die Aktivierung dieser virtuellen Taste selbst auf Platz 1 steht
+  spc-alone (switch ((input-history real spc 2)) spc break)
 )
 
 ;; -----------------------------------------------------------------------------
@@ -38,10 +48,11 @@
   1     2     3     4     5     6     7     8     9     0     -     =
   caps
   spc
-  lctl  lalt  lmet        ralt  rmet
+  lctl  lalt  lmet  ralt  rmet
   h     j     k     l
   a     u     o     s
-  m     /
+  n     m     /
+  f
 )
 
 ;; -----------------------------------------------------------------------------
@@ -54,7 +65,8 @@
   f14   lmet  lalt  rmet  ralt    ;; lctl -> F14 (OmniVoice Diktat); Swap Alt <-> Super (macOS-Style Modifiers)
   _     _     _     _             ;; h j k l
   _     _     _     _             ;; a u o s
-  _     _                         ;; m /
+  _     _     _                   ;; n m /
+  _                               ;; f
 )
 
 ;; -----------------------------------------------------------------------------
@@ -67,5 +79,20 @@
   _     _     _     _     _       ;; Behält Modifier-Swap bei
   left  down  up    right         ;; Vim-Navigation
   @ä    @ü    @ö    @ß            ;; Umlaute
-  bspc  ret                       ;; Textbearbeitung (m -> Backspace, / -> Enter)
+  spc   bspc  ret                 ;; n -> gehaltenes Space (Push-to-Talk); m -> Backspace, / -> Enter
+  @nav                            ;; f halten -> NAV LAYER
+)
+
+;; -----------------------------------------------------------------------------
+;; NAV LAYER (Hold Space + f)
+;; -----------------------------------------------------------------------------
+(deflayer nav
+  f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   ;; wie SPACE LAYER
+  _
+  XX
+  _     _     _     _     _       ;; Behält Modifier-Swap bei
+  home  pgdn  pgup  end           ;; h j k l -> Pos1, Bild runter, Bild hoch, Ende
+  @ä    @ü    @ö    @ß            ;; wie SPACE LAYER
+  spc   bspc  ret                 ;; wie SPACE LAYER
+  XX
 )

@@ -1,7 +1,6 @@
 ;; =============================================================================
 ;; KANATA CONFIGURATION
 ;; =============================================================================
-
 (defcfg
   process-unmapped-keys yes  ;; Nicht explizit gemappte Tasten normal durchreichen
   concurrent-tap-hold   yes  ;; Pflicht für defchordsv2 (Reload-Chord)
@@ -52,7 +51,7 @@
   _     _     _     _     _     _     _     _     _     _     _     _
   @caps
   @spc
-  f14   lmet  lalt        rmet  ralt    ;; lctl -> F14 (OmniVoice Diktat); Swap Alt <-> Super (macOS-Style Modifiers)
+  f14   lmet  lalt  rmet  ralt    ;; lctl -> F14 (OmniVoice Diktat); Swap Alt <-> Super (macOS-Style Modifiers)
   _     _     _     _             ;; h j k l
   _     _     _     _             ;; a u o s
   _     _                         ;; m /
@@ -65,7 +64,7 @@
   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   ;; Zahlenreihe -> F1-F12
   _
   XX                              ;; Space selbst hat im Layer keine eigene Funktion
-  _     _     _           _     _       ;; Behält Modifier-Swap bei
+  _     _     _     _     _       ;; Behält Modifier-Swap bei
   left  down  up    right         ;; Vim-Navigation
   @ä    @ü    @ö    @ß            ;; Umlaute
   bspc  ret                       ;; Textbearbeitung (m -> Backspace, / -> Enter)
